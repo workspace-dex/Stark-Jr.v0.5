@@ -41,6 +41,58 @@ As soon as a complete sentence appears (ending with ., !, or ?), it is sent to T
 
 This allows low-latency, sentence-level real-time responses.
 
+# Requirements/Installation Guide
+
+**✅ Full pip installation**
+Install all required Python packages
+```bash
+pip install \
+    sounddevice \
+    numpy \
+    faster-whisper \
+    ollama \
+    piper-tts
+```
+
+🧩 If you want a single copy-paste one-liner:
+```bash
+pip install sounddevice numpy faster-whisper ollama piper-tts
+```
+
+**⚙️ System Dependencies (Important!)**
+
+Ubuntu / Debian
+```bash
+sudo apt install python3-dev portaudio19-dev ffmpeg
+```
+
+Arch Linux
+```bash
+sudo pacman -S portaudio ffmpeg python-pip
+```
+
+**🗂️ Model Installation Section**
+Whisper model (handled automatically by faster-whisper)
+
+No manual download needed.
+
+Piper TTS model
+```bash
+mkdir -p models/piper
+wget -O models/piper/en_US-lessac-medium.onnx \
+  https://github.com/rhasspy/piper/releases/download/v1.0.0/en_US-lessac-medium.onnx
+```
+
+Ollama model (example)
+```bash
+ollama pull llama3.2:3b
+```
+
+⚡ Optional: GPU acceleration for Whisper
+```bash
+pip install faster-whisper[cuda]
+```
+
 # Why This Exists
 
 Growing up, Tony Stark wasn’t just a character — he was a blueprint.
